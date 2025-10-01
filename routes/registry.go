@@ -16,7 +16,7 @@ type IRouteRegister interface{
 	Serve()
 }
 
-func NewRegistry(controller controllers.IControllerRegistry, group *gin.RouterGroup) IRouteRegister{
+func NewRouteRegistry(controller controllers.IControllerRegistry, group *gin.RouterGroup) IRouteRegister{
 	return &Registry{controller: controller, group: group}
 }
 
