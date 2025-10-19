@@ -37,6 +37,7 @@ func (u *UserController) Login(ctx *gin.Context) {
 			Err: err,
 			Gin: ctx,
 		})
+		return
 	}
 
 	validate := validator.New()
@@ -81,7 +82,8 @@ func (u *UserController) Register(ctx *gin.Context) {
 			Code: http.StatusBadRequest,
 			Err: err,
 			Gin: ctx,
-		})
+		}) 
+		return
 	}
 
 	validate := validator.New()

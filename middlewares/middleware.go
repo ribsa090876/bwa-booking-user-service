@@ -120,12 +120,18 @@ func Authenticate() gin.HandlerFunc  {
 	return func(ctx *gin.Context)  {
 		var err error
 		token := ctx.GetHeader(constants.Authorization)
-		if token != "" {
+		if token == "" {
 			responseUnauthorized(ctx, errConstant.ErrUnauthorized.Error())
 			return 
 		}
 
 		err = validateAPIKey(ctx)
+		if err != nil {
+			responseUnauthorized(ctx, err.Error())
+			return
+		}
+
+		err = validateBearerToken(ctx, token)
 		if err != nil {
 			responseUnauthorized(ctx, err.Error())
 			return

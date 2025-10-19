@@ -12,7 +12,7 @@ import (
 func BindFromJSON(dest any, filename , path string) error {
 	v := viper.New()
 
-	v.SetConfigFile("json")
+	v.SetConfigType("json")
 	v.AddConfigPath(path)
 	v.SetConfigName(filename)
 

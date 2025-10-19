@@ -124,6 +124,7 @@ func (u *UserService) Register(ctx context.Context, req *dto.RegisterRequest) (*
 		Name: req.Name,
 		Username: req.Username,
 		Password: string(hashedPassword),
+		PhoneNumber: req.PhoneNumber,
 		Email: req.Email,
 		RoleID: constants.Customer,
 	})

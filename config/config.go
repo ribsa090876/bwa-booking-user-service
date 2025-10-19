@@ -5,6 +5,7 @@ import (
 	"user-service/common/util"
 
 	"github.com/sirupsen/logrus"
+	_ "github.com/spf13/viper/remote"
 )
 
 var Config AppConfig
@@ -27,9 +28,9 @@ type Database struct {
 	Name                  string `json:"name"`
 	Username              string `json:"username"`
 	Password              string `json:"password"`
-	MaxOpenConnections    int    `json:"maxOpenConnections"`
+	MaxOpenConnections    int    `json:"maxOpenConnection"`
 	MaxLifeTimeConnection int    `json:"maxLifeTimeConnection"`
-	MaxIdleConnections    int    `json:"maxIdleConnections"`
+	MaxIdleConnections    int    `json:"maxIdleConnection"`
 	MaxIdleTime           int    `json:"maxIdleTime"`
 }
 

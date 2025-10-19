@@ -32,20 +32,19 @@ func HttpResponse(param ParamHTTPResp)  {
 			Data: param.Data,
 			Token: param.Token,
 		})
+		return
 	}
 
-	message := errConstant.ErrInternalServerError.Error()
+message := errConstant.ErrInternalServerError.Error()
 	if param.Message != nil {
 		message = *param.Message
-	} else if param.Err != nil  {
-		if errConstant.ErrMapping(param.Err) {
-			message = param.Err.Error()
-		}
+	} else if errConstant.ErrMapping(param.Err) {
+		message = param.Err.Error()
 	}
 
 	param.Gin.JSON(param.Code, Response{
-		Status: constants.Error,
+		Status:  constants.Error,
 		Message: message,
-		Data: param.Data,
+		Data:    param.Data,
 	})
 }
