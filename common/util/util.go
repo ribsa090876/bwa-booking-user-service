@@ -72,7 +72,7 @@ func SetEnvFromConsulKV(v *viper.Viper) error  {
 func BindFromConsul(dest any, endPoint, path string) error  {
 	v := viper.New()
 
-	v.SetConfigType("josn")
+	v.SetConfigType("json")
 	err := v.AddRemoteProvider("consul", endPoint, path)
 	if err != nil {
 		logrus.Errorf("failed to add remote provider: %v", err)
